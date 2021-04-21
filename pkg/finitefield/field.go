@@ -33,17 +33,17 @@ func (ff FiniteField) Multiply(elem1 float64, elem2 float64) float64 {
 
 // Divide ...
 func (ff FiniteField) Divide(elem1 float64, elem2 float64) float64 {
-	elem2Inverse := ff.Power(elem2, ff.order-2)
+	elem2Inverse := ff.Exp(elem2, ff.order-2)
 	return ff.Multiply(elem1, elem2Inverse)
 }
 
-// Power ...
+// Exp ...
 // TODO refactor this
-func (ff FiniteField) Power(elem1 float64, power int64) float64 {
+func (ff FiniteField) Exp(elem1 float64, power int64) float64 {
 	var value float64 = 1
 	reducedExponent := mod(float64(power), float64(ff.order-1))
 	for i := int64(0); i < int64(reducedExponent); i++ {
-		value = value * elem1
+		value = ff.Multiply(value, elem1)
 	}
 
 	return ff.mod(value)
