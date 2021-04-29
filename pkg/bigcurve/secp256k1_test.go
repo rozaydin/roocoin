@@ -23,15 +23,14 @@ func TestOrderOfSeedPoint(t *testing.T) {
 // func TestFindOrderOfSeedPoint(t *testing.T) {
 
 // 	// times out :), test sometime again with no timeout to see if it calculates
-// 	curve := NewSec256k1Curve()
-// 	generatorPoint, _ := curve.NewPoint(Gx, Gy)
+// 	curve := NewSec256K1Curve()
 
-// 	order, err := generatorPoint.CalculateOrder()
+// 	order, err := curve.SeedPoint.CalculateOrder()
 // 	if err != nil {
 // 		t.Error(fmt.Sprintf("Failed to calculate order! err: %s", err))
 // 	}
 
-// 	if N.Cmp(order) != 0 {
+// 	if curve.GroupOrder.Cmp(order) != 0 {
 // 		t.Error("Calculated order does not match expected order!")
 // 	}
 
