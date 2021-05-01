@@ -8,6 +8,9 @@ func TestOrderOfSeedPoint(t *testing.T) {
 
 	curve := NewSec256K1Curve()
 
+	// newOrder := new(big.Int).Set(curve.GroupOrder)
+	// newOrder = newOrder.Sub(newOrder, big.NewInt(1))
+
 	identityPoint, err := curve.SeedPoint.Mul(curve.GroupOrder)
 
 	if err != nil {
