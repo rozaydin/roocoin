@@ -1,6 +1,7 @@
 package bigcurve
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -20,11 +21,9 @@ func TestOrderOfSeedPoint(t *testing.T) {
 	if !identityPoint.IsIdentity() {
 		t.Error("Summing order times did not end up as identity!")
 	}
-
 }
 
 // func TestFindOrderOfSeedPoint(t *testing.T) {
-
 // 	// times out :), test sometime again with no timeout to see if it calculates
 // 	curve := NewSec256K1Curve()
 
@@ -36,5 +35,12 @@ func TestOrderOfSeedPoint(t *testing.T) {
 // 	if curve.GroupOrder.Cmp(order) != 0 {
 // 		t.Error("Calculated order does not match expected order!")
 // 	}
-
 // }
+
+func TestGeneratePrivateKey(t *testing.T) {
+
+	_, err := NewPrivateKey("roo")
+	if err != nil {
+		t.Error(fmt.Sprintf("Failed to calculate order! err: %s", err))
+	}
+}
